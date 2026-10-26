@@ -8,7 +8,7 @@ Open the workplace's page on the site and click **Edit this page on GitHub** at 
 
 ## Add a new workplace
 
-1. Open [`_template.md`](src/content/workplaces/_template.md) and copy its contents.
+1. Open [`_template.md`](https://raw.githubusercontent.com/lopis/vegan-workplace-directory/refs/heads/main/src/content/workplaces/_template.md) and copy its contents.
 2. In [`src/content/workplaces/`](src/content/workplaces/), click **Add file → Create new file**.
 3. Name the file (see [File name](#file-name) below), paste the template and fill it in.
 4. Click **Commit changes…** and choose **Propose changes** to open a pull request.
