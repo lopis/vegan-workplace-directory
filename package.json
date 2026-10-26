@@ -17,6 +17,7 @@
   },
   "packageManager": "pnpm@12.3.2",
   "devDependencies": {
+    "@phosphor-icons/core": "^2.1.1",
     "@types/node": "^26.6.5",
     "sass": "^1.106.1"
   }

@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import VeganLabel from '../components/VeganLabel.astro';
 import Base from '../layouts/Base.astro';
 import { href, REPO_URL } from '../site.ts';
 import { countryName, LABELS } from '../workplace.ts';
@@ -38,7 +39,7 @@ const countries = [...new Set(workplaces.map((w) => w.data.country))]
         <th>Industry</th>
         <th>Location</th>
         <th aria-sort="ascending">
-          <button id="sort-label" type="button">Vegan label <span aria-hidden="true">▲</span></button>
+          <button id="sort-label" type="button">Status</button>
         </th>
       </tr>
     </thead>
@@ -53,7 +54,9 @@ const countries = [...new Set(workplaces.map((w) => w.data.country))]
             <td>
               {w.data.city}, {countryName(w.data.country)}
             </td>
-            <td>{LABELS[w.data.label].name}</td>
+            <td>
+              <VeganLabel label={w.data.label} />
+            </td>
           </tr>
         ))
       }

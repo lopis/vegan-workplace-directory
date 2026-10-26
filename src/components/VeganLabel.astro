@@ -1,0 +1,52 @@
+---
+import VeganIcon from '@phosphor-icons/core/assets/regular/letter-circle-v.svg';
+import VeganFriendlyIcon from '@phosphor-icons/core/assets/regular/plant.svg';
+import VegetarianIcon from '@phosphor-icons/core/assets/regular/cheese.svg';
+import NotVeganIcon from '@phosphor-icons/core/assets/regular/smiley-sad.svg';
+import { LABELS, type Label } from '../workplace.ts';
+
+interface Props {
+  label: Label;
+}
+
+const ICONS = {
+  vegan: VeganIcon,
+  'vegan-friendly': VeganFriendlyIcon,
+  vegetarian: VegetarianIcon,
+  'not-vegan': NotVeganIcon,
+} satisfies Record<Label, unknown>;
+
+const { label } = Astro.props;
+const Icon = ICONS[label];
+---
+
+<span class={`vegan-label ${label}`}>
+  <Icon aria-hidden="true" width="1.25em" height="1.25em" />
+  {LABELS[label].name}
+</span>
+
+<style lang="scss">
+  .vegan-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    padding: 0.15em 0.6em 0.15em 0.4em;
+    border-radius: 999px;
+    font-weight: 600;
+    color: #1a1a1a;
+
+    &.vegan {
+      background: #2e7d32;
+      color: #fff;
+    }
+    &.vegan-friendly {
+      background: #c5e85c;
+    }
+    &.vegetarian {
+      background: #ffe066;
+    }
+    &.not-vegan {
+      background: #f9a54a;
+    }
+  }
+</style>

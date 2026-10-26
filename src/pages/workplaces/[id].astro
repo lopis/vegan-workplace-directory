@@ -1,8 +1,9 @@
 ---
 import { getCollection, render, type CollectionEntry } from 'astro:content';
+import VeganLabel from '../../components/VeganLabel.astro';
 import Base from '../../layouts/Base.astro';
 import { href, REPO_URL } from '../../site.ts';
-import { countryName, LABELS } from '../../workplace.ts';
+import { countryName } from '../../workplace.ts';
 
 export async function getStaticPaths() {
   const workplaces = await getCollection('workplaces');
@@ -15,7 +16,6 @@ interface Props {
 
 const { workplace } = Astro.props;
 const { data } = workplace;
-const label = LABELS[data.label];
 const { Content } = await render(workplace);
 const hasBody = Boolean(workplace.body?.trim());
 ---
@@ -40,7 +40,7 @@ const hasBody = Boolean(workplace.body?.trim());
   <dl>
     <div>
       <dt>Status</dt>
-      <dd>{label.name}</dd>
+      <dd><VeganLabel label={data.label} /></dd>
     </div>
 
     <div>
