@@ -30,18 +30,20 @@ If the company has **more than one workplace in the same city**, add a short loc
 
 ## Fields
 
-| Field         | Required | What to write                                                                                   |
-| ------------- | -------- | ----------------------------------------------------------------------------------------------- |
-| `name`        | yes      | The company's full name, e.g. `Ecosia GmbH`                                                     |
-| `industry`    | yes      | What field the company works in, e.g. `Software`                                                |
-| `city`        | yes      | City of this workplace, e.g. `Berlin`                                                           |
-| `country`     | yes      | Two-letter country code in capitals, e.g. `DE`                                                  |
-| `size`        | yes      | Number of people at **this workplace**: `1-99`, `100-199`, `200-499`, `500-749`, `750-999` or `1000+` |
-| `label`       | yes      | `vegan`, `vegan-friendly`, `vegetarian` or `not-vegan` (see below)                              |
-| `description` | yes      | One line about what the company does                                                            |
-| `veganStatus` | yes      | One line about what being vegan is like there                                                   |
-| `website`     | no       | Company website without `https://`, e.g. `ecosia.org`                                           |
-| `lastUpdated` | yes      | Today's date, written as `YYYY-MM-DD`, e.g. `2026-10-26`                                        |
+All fields are required.
+
+| Field         | What to write                                                                                         |
+| ------------- | ----------------------------------------------------------------------------------------------------- |
+| `name`        | The company's full name, e.g. `Ecosia GmbH`                                                           |
+| `industry`    | What field the company works in, e.g. `Software`                                                      |
+| `city`        | City of this workplace, e.g. `Berlin`                                                                 |
+| `country`     | Two-letter country code in capitals, e.g. `DE`                                                        |
+| `size`        | Number of people at **this workplace**: `1-99`, `100-199`, `200-499`, `500-749`, `750-999` or `1000+` |
+| `label`       | `vegan`, `vegan-friendly`, `vegetarian` or `not-vegan` (see below)                                    |
+| `description` | One line about what the company does                                                                  |
+| `veganStatus` | One line about what being vegan is like there                                                         |
+| `website`     | Company website without `https://`, e.g. `ecosia.org`                                                 |
+| `lastUpdated` | Today's date, written as `YYYY-MM-DD`, e.g. `2026-10-26`                                              |
 
 Below the second `---` line you can write as much as you like about the workplace: the canteen, team events, how colleagues react. This part is optional.
 

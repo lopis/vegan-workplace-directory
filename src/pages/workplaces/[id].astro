@@ -48,16 +48,12 @@ const hasBody = Boolean(workplace.body?.trim());
       <dd>{data.size} people</dd>
     </div>
 
-    {
-      data.website && (
-        <div>
-          <dt>Website</dt>
-          <dd>
-            <a href={'https://' + data.website}>{data.website}</a>
-          </dd>
-        </div>
-      )
-    }
+    <div>
+      <dt>Website</dt>
+      <dd>
+        <a href={'https://' + data.website}>{data.website}</a>
+      </dd>
+    </div>
 
     <div>
       <dt>Last updated</dt>

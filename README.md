@@ -64,7 +64,7 @@ size: 200-499                  # required, one of: 1-99, 100-199, 200-499, 500-7
 label: vegan-friendly          # required, one of: vegan, vegan-friendly, vegetarian, not-vegan
 description: Search engine that uses its profits to plant trees.  # required, one line
 veganStatus: Vegan lunch option every day; team events default to vegetarian.  # required, one line
-website: ecosia.org               # optional, without https://
+website: ecosia.org               # required, without https://
 lastUpdated: 2026-10-20           # required, date the info was last checked
 ---
 

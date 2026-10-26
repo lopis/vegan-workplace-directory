@@ -126,8 +126,7 @@ export const workplaceSchema = z.strictObject(
       })
       .refine(isWebAddress, {
         error: (iss) => `"website" must be a web address like ecosia.org or example.com/jobs, got "${iss.input}"`,
-      })
-      .optional(),
+      }),
     lastUpdated: z.preprocess(
       // YAML parsers differ: some turn 2026-10-20 into a Date, others keep it a string.
       (value) => (value instanceof Date ? value.toISOString().slice(0, 10) : value),
