@@ -1,2 +1,6 @@
+# Dependency install scripts are blocked by default. List any package that wants
+# to run one here and set it to false; CI fails on packages that aren't listed.
 allowBuilds:
-  '@parcel/watcher': set this to true or false
+  # Native file watcher used by the `sass --watch` CLI only. Astro compiles SCSS
+  # through Vite, and prebuilt binaries ship as optional dependencies anyway.
+  '@parcel/watcher': false
