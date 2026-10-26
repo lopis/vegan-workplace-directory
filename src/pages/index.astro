@@ -1,0 +1,90 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { href, REPO_URL } from '../site.ts';
+import { countryName, LABELS } from '../workplace.ts';
+
+const workplaces = (await getCollection('workplaces')).sort(
+  (a, b) =>
+    LABELS[a.data.label].rank - LABELS[b.data.label].rank || a.data.name.localeCompare(b.data.name),
+);
+
+const countries = [...new Set(workplaces.map((w) => w.data.country))]
+  .map((code) => ({ code, name: countryName(code)! }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<Base title="Vegan Workplace Directory">
+  <h1>Vegan Workplace Directory</h1>
+  <p>
+    A user-contributed list of how easy it is to be vegan in workplaces around the world.
+    <br>
+    <a href={`${REPO_URL}/blob/main/CONTRIBUTING.md`}>Add or update a workplace</a>.
+  </p>
+
+  <p id="country-filter-wrapper" hidden>
+    <label aria-label="country">
+      <select id="country-filter">
+        <option value="">All countries</option>
+        {countries.map((c) => <option value={c.code}>{c.name}</option>)}
+      </select>
+    </label>
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th>Industry</th>
+        <th>Location</th>
+        <th aria-sort="ascending">
+          <button id="sort-label" type="button">Vegan label <span aria-hidden="true">▲</span></button>
+        </th>
+      </tr>
+    </thead>
+    <tbody id="workplaces">
+      {
+        workplaces.map((w) => (
+          <tr data-rank={LABELS[w.data.label].rank} data-name={w.data.name} data-country={w.data.country}>
+            <td>
+              <a href={href(`workplaces/${w.id}/`)}>{w.data.name}</a>
+            </td>
+            <td>{w.data.industry}</td>
+            <td>
+              {w.data.city}, {countryName(w.data.country)}
+            </td>
+            <td>{LABELS[w.data.label].name}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</Base>
+
+<script>
+  const tbody = document.querySelector<HTMLTableSectionElement>('#workplaces')!;
+  const sortButton = document.querySelector<HTMLButtonElement>('#sort-label')!;
+  const filter = document.querySelector<HTMLSelectElement>('#country-filter')!;
+  let ascending = true;
+
+  sortButton.addEventListener('click', () => {
+    ascending = !ascending;
+    const rows = [...tbody.rows].sort(
+      (a, b) =>
+        (Number(a.dataset.rank) - Number(b.dataset.rank)) * (ascending ? 1 : -1) ||
+        a.dataset.name!.localeCompare(b.dataset.name!),
+    );
+    tbody.append(...rows);
+    sortButton.closest('th')!.setAttribute('aria-sort', ascending ? 'ascending' : 'descending');
+    sortButton.querySelector('span')!.textContent = ascending ? '▲' : '▼';
+  });
+
+  filter.addEventListener('change', () => {
+    for (const row of tbody.rows) {
+      row.hidden = filter.value !== '' && row.dataset.country !== filter.value;
+    }
+  });
+
+  // The filter only works with JS, so it stays hidden without it.
+  document.querySelector('#country-filter-wrapper')!.removeAttribute('hidden');
+</script>

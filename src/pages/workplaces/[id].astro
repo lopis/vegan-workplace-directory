@@ -1,0 +1,108 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { href, REPO_URL } from '../../site.ts';
+import { countryName, LABELS } from '../../workplace.ts';
+
+export async function getStaticPaths() {
+  const workplaces = await getCollection('workplaces');
+  return workplaces.map((workplace) => ({ params: { id: workplace.id }, props: { workplace } }));
+}
+
+interface Props {
+  workplace: CollectionEntry<'workplaces'>;
+}
+
+const { workplace } = Astro.props;
+const { data } = workplace;
+const label = LABELS[data.label];
+const { Content } = await render(workplace);
+const hasBody = Boolean(workplace.body?.trim());
+---
+
+<Base title={`${data.name}, ${data.city} – Vegan Workplace Directory`}>
+  <p><a href={href('/')}>← All workplaces</a></p>
+
+  <hgroup>
+    <h1>{data.name}</h1>
+    <small>{data.industry}</small>
+    <small>{data.city}, {countryName(data.country)}</small>
+  </hgroup>
+
+  <p>
+    {data.description}
+  </p>
+
+  <p>
+    {data.veganStatus}
+  </p>
+
+  <dl>
+    <div>
+      <dt>Status</dt>
+      <dd>{label.name}</dd>
+    </div>
+
+    <div>
+      <dt>Size (at this location)</dt>
+      <dd>{data.size} people</dd>
+    </div>
+
+    {
+      data.website && (
+        <div>
+          <dt>Website</dt>
+          <dd>
+            <a href={'https://' + data.website}>{data.website}</a>
+          </dd>
+        </div>
+      )
+    }
+
+    <div>
+      <dt>Last updated</dt>
+      <dd>
+        <time datetime={data.lastUpdated.toISOString().slice(0, 10)}>
+          {data.lastUpdated.toLocaleDateString('en-GB', { dateStyle: 'long', timeZone: 'UTC' })}
+        </time>
+      </dd>
+    </div>
+  </dl>
+
+  {
+    hasBody && (
+      <section>
+        <hr>
+        <h2>Details</h2>
+        <Content />
+      </section>
+    )
+  }
+
+  <p>
+    <a href={`${REPO_URL}/edit/main/${workplace.filePath}`}>Edit this page on GitHub</a>
+  </p>
+</Base>
+
+
+<style lang="scss">
+hgroup {
+	display: flex;
+	flex-direction: column;
+	gap: 0px;
+
+  > * {
+    margin: 0;
+  }
+}
+
+dl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+
+  dd {
+    margin: 0;
+  }
+}
+</style>
