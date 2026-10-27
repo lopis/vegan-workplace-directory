@@ -1,6 +1,6 @@
 ---
 name: ProVeg e.V.
-industry: Non-profit — food systems and plant-based advocacy
+industry: Non-profit
 city: Berlin
 country: DE
 size: 1-99
