@@ -23,7 +23,7 @@ body:
     id: industry
     attributes:
       label: Industry
-      description: What field the company works in.
+      description: A short label for what field the company works in, e.g. Software or Non-profit.
       placeholder: Software
     validations:
       required: true

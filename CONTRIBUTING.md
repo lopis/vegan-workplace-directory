@@ -39,7 +39,7 @@ All fields are required.
 | Field         | What to write                                                                                         |
 | ------------- | ----------------------------------------------------------------------------------------------------- |
 | `name`        | The company's full name, e.g. `Ecosia GmbH`                                                           |
-| `industry`    | What field the company works in, e.g. `Software`                                                      |
+| `industry`    | A short label for what field the company works in, e.g. `Software` or `Non-profit`                    |
 | `city`        | City of this workplace, e.g. `Berlin`                                                                 |
 | `country`     | Two-letter country code in capitals, e.g. `DE`                                                        |
 | `size`        | Number of people at **this workplace**: `1-99`, `100-199`, `200-499`, `500-749`, `750-999` or `1000+` |
