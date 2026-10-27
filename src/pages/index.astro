@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import VeganLabel from '../components/VeganLabel.astro';
 import Base from '../layouts/Base.astro';
-import { href, REPO_URL } from '../site.ts';
+import { href } from '../site.ts';
 import { countryName, LABELS } from '../workplace.ts';
 
 const workplaces = (await getCollection('workplaces')).sort(
@@ -20,7 +20,7 @@ const countries = [...new Set(workplaces.map((w) => w.data.country))]
   <p>
     A user-contributed list of how easy it is to be vegan in workplaces around the world.
     <br>
-    <a href={`${REPO_URL}/blob/main/CONTRIBUTING.md`}>Add or update a workplace</a>.
+    <a href={href('contribute/')}>Add or update a workplace</a>.
   </p>
 
   <p id="country-filter-wrapper" hidden>

@@ -6,26 +6,22 @@ export const LABELS = {
   vegan: {
     rank: 1,
     name: 'Vegan company',
-    food: 'All food the company provides is vegan, by policy.',
-    culture: "Veganism is part of the company's values.",
+    description: "All food the company provides is vegan, by policy, and veganism is part of the company's values.",
   },
   'vegan-friendly': {
     rank: 2,
     name: 'Vegan friendly',
-    food: 'A proper vegan option is always available, without having to ask.',
-    culture: 'Vegan needs are considered by default; no awkwardness at events.',
+    description: 'A proper vegan option is always available without having to ask, and vegan needs are considered by default.',
   },
   vegetarian: {
     rank: 3,
     name: 'Vegetarian only',
-    food: 'Vegetarian options exist, but vegan options are rare, ad hoc or on request.',
-    culture: 'Vegans are tolerated but have to speak up or bring their own food.',
+    description: 'Vegetarian options exist, but vegan options are rare or on request. Vegans have to speak up or bring their own food.',
   },
   'not-vegan': {
     rank: 4,
     name: 'Not vegan friendly',
-    food: 'Little or no plant-based food is provided.',
-    culture: 'Vegan needs are ignored, met poorly or with pushback.',
+    description: 'Little or no plant-based food is provided, and vegan needs are ignored, met poorly or with pushback.',
   },
 } as const;
 

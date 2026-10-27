@@ -71,12 +71,12 @@ body:
     id: label
     attributes:
       label: Vegan label
-      description: Covers both food and workplace culture. If they point to different labels, pick the less vegan-friendly one and explain why below.
+      description: Pick the one that fits best overall.
       options:
         - "Vegan company: all food the company provides is vegan, by policy, and veganism is part of the company's values."
-        - "Vegan friendly: a proper vegan option is always available without asking, and vegan needs are considered by default."
-        - "Vegetarian only: vegan options are rare or on request, and vegans have to speak up or bring their own food."
-        - "Not vegan friendly: little or no plant-based food, and vegan needs are ignored or met with pushback."
+        - "Vegan friendly: a proper vegan option is always available without having to ask, and vegan needs are considered by default."
+        - "Vegetarian only: vegetarian options exist, but vegan options are rare or on request. Vegans have to speak up or bring their own food."
+        - "Not vegan friendly: little or no plant-based food is provided, and vegan needs are ignored, met poorly or with pushback."
     validations:
       required: true
 

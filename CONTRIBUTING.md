@@ -53,16 +53,14 @@ Below the second `---` line you can write as much as you like about the workplac
 
 ## Choosing a label
 
-The label covers both **food** (canteen, catering, office snacks, events) and **workplace culture** (how veganism is treated socially and in company policy). Pick the one that fits best overall.
+Pick the one that fits best overall.
 
-| `label`          | Food                                                                        | Culture                                                            |
-| ---------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| `vegan`          | All food the company provides is vegan, by policy.                          | Veganism is part of the company's values.                          |
-| `vegan-friendly` | A proper vegan option is always available, without having to ask.           | Vegan needs are considered by default; no awkwardness at events.   |
-| `vegetarian`     | Vegetarian options exist, but vegan options are rare, ad hoc or on request. | Vegans are tolerated but have to speak up or bring their own food. |
-| `not-vegan`      | Little or no plant-based food is provided.                                  | Vegan needs are ignored or met with pushback.                      |
-
-If food and culture point to different labels, use the less vegan-friendly one and explain why in `veganStatus`.
+| `label`          | What it means                                                                                                        |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `vegan`          | All food the company provides is vegan, by policy, and veganism is part of the company's values.                     |
+| `vegan-friendly` | A proper vegan option is always available without having to ask, and vegan needs are considered by default.          |
+| `vegetarian`     | Vegetarian options exist, but vegan options are rare or on request. Vegans have to speak up or bring their own food. |
+| `not-vegan`      | Little or no plant-based food is provided, and vegan needs are ignored, met poorly or with pushback.                 |
 
 ## Disagreements
 

@@ -1,0 +1,162 @@
+---
+import VeganLabel from '../components/VeganLabel.astro';
+import Base from '../layouts/Base.astro';
+import { href, REPO_URL } from '../site.ts';
+import { LABELS, SIZES, type Label } from '../workplace.ts';
+
+const labels = Object.keys(LABELS) as Label[];
+const issueFormUrl = `${REPO_URL}/issues/new?template=add-workplace.yml`;
+const workplacesUrl = `${REPO_URL}/tree/main/src/content/workplaces`;
+const templateUrl = `${REPO_URL}/blob/main/src/content/workplaces/_template.md`;
+---
+
+<Base title="Add a workplace – Vegan Workplace Directory">
+  <p><a href={href('/')}>← All workplaces</a></p>
+
+  <h1>Add a workplace</h1>
+  <p>
+    Every entry comes from someone who works there or knows the place well. A workplace is one company in one
+    city, so if a company has offices in several cities, add each one separately.
+  </p>
+
+  <h2>Have you used GitHub before?</h2>
+
+  <details name="route">
+    <summary>No, or I'd rather fill in a form</summary>
+
+    <ol>
+      <li>
+        <a href="https://github.com/signup">Create a free GitHub account</a> if you don't have one.
+      </li>
+      <li>Open the <a href={issueFormUrl}>“Add a workplace” form</a>.</li>
+      <li>Fill in the fields. Use the <a href="#labels">labels</a> below to pick the vegan label.</li>
+      <li>Click <strong>Create</strong>.</li>
+    </ol>
+    <p>
+      A maintainer turns your answers into a workplace page and may reply on the issue with questions. The
+      issue is public and shows your GitHub name, but your name isn't shown on this site.
+    </p>
+  </details>
+
+  <details name="route">
+    <summary>Yes, I can open a pull request</summary>
+
+    <p>Each workplace is one markdown file in <a href={workplacesUrl}><code>src/content/workplaces/</code></a>.</p>
+
+    <h3>Add a workplace</h3>
+    <ol>
+      <li>Copy the contents of <a href={templateUrl}><code>_template.md</code></a>.</li>
+      <li>
+        In <a href={workplacesUrl}><code>src/content/workplaces/</code></a>, click <strong>Add file → Create new file</strong>.
+      </li>
+      <li>Name the file (see below), paste the template and fill it in.</li>
+      <li>Click <strong>Commit changes…</strong> and choose <strong>Propose changes</strong>.</li>
+    </ol>
+
+    <h3>Edit a workplace</h3>
+    <p>
+      Click <strong>Edit this page on GitHub</strong> at the bottom of any workplace page, make your change and
+      propose it as a pull request. Update <code>lastUpdated</code> to today's date.
+    </p>
+
+    <h3>File name</h3>
+    <p>
+      <code>&lt;company&gt;.&lt;country&gt;.md</code>, all lowercase, with hyphens instead of spaces, e.g.
+      <code>ecosia.de.md</code>. The country is its two-letter code.
+    </p>
+    <ul>
+      <li>
+        More than one workplace in the same country: add the city, e.g. <code>acme.us-new-york.md</code>, and rename
+        any existing file without a city.
+      </li>
+      <li>
+        More than one in the same city: add an office name, e.g. <code>acme.us-new-york-downtown.md</code>.
+      </li>
+    </ul>
+
+    <h3>Fields</h3>
+    <p>All fields are required.</p>
+    <dl>
+      <dt><code>name</code></dt>
+      <dd>The company's full name, e.g. <code>Ecosia GmbH</code></dd>
+      <dt><code>industry</code></dt>
+      <dd>What field the company works in, e.g. <code>Software</code></dd>
+      <dt><code>city</code></dt>
+      <dd>City of this workplace, e.g. <code>Berlin</code></dd>
+      <dt><code>country</code></dt>
+      <dd>Two-letter country code in capitals, e.g. <code>DE</code></dd>
+      <dt><code>size</code></dt>
+      <dd>
+        Number of people at <strong>this workplace</strong>: {SIZES.map((s, i) => (
+          <>{i > 0 && ', '}<code>{s}</code></>
+        ))}
+      </dd>
+      <dt><code>label</code></dt>
+      <dd>
+        {labels.map((l, i) => (
+          <>{i > 0 && ', '}<code>{l}</code></>
+        ))} (see <a href="#labels">labels</a>)
+      </dd>
+      <dt><code>description</code></dt>
+      <dd>One line about what the company does</dd>
+      <dt><code>veganStatus</code></dt>
+      <dd>One line about what being vegan is like there</dd>
+      <dt><code>website</code></dt>
+      <dd>Company website without <code>https://</code>, e.g. <code>ecosia.org</code></dd>
+      <dt><code>lastUpdated</code></dt>
+      <dd>Today's date as <code>YYYY-MM-DD</code></dd>
+    </dl>
+    <p>Below the second <code>---</code> line you can write as much as you like. This part is optional.</p>
+
+    <p>
+      A check runs on every pull request. If something is wrong, it tells you which file and field to fix; edit
+      the file in the same pull request and it runs again.
+    </p>
+  </details>
+
+  <h2 id="labels">Choosing a label</h2>
+  <p>Pick the label that fits best overall.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Label</th>
+        <th>What it means</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        labels.map((l) => (
+          <tr>
+            <td><VeganLabel label={l} /></td>
+            <td>{LABELS[l].description}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+
+  <h2>Disagreements</h2>
+  <p>
+    Each workplace has one rating. If you disagree with one, propose a change and explain why, or
+    <a href={`${REPO_URL}/issues/new`}>open an issue</a> to discuss it first.
+  </p>
+</Base>
+
+<style lang="scss">
+  details {
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    padding: 0 1rem;
+    margin-bottom: 0.75rem;
+
+    &[open] {
+      padding-bottom: 0.5rem;
+    }
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0.75rem 0;
+  }
+</style>

@@ -80,16 +80,14 @@ The site maps each range to a number internally so sizes can be sorted; contribu
 
 #### Vegan label rubric
 
-The label covers both **food** (canteen, catering, office snacks, events) and **workplace culture** (how veganism is treated socially and in company policy). Pick the label whose description fits best overall.
+Pick the label whose description fits best overall.
 
-| `label` value    | Displayed as       | Food                                                                        | Culture                                                            |
-| ---------------- | ------------------ | --------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| `vegan`          | Vegan company      | All food the company provides is vegan, by policy.                          | Veganism is part of the company's values.                          |
-| `vegan-friendly` | Vegan friendly     | A proper vegan option is always available, without having to ask.           | Vegan needs are considered by default; no awkwardness at events.   |
-| `vegetarian`     | Vegetarian only    | Vegetarian options exist, but vegan options are rare, ad hoc or on request. | Vegans are tolerated but have to speak up or bring their own food. |
-| `not-vegan`      | Not vegan friendly | Little or no plant-based food is provided.                                  | Vegan needs are ignored or met with pushback.                      |
-
-If food and culture point to different labels, use the less vegan-friendly one and explain why in `veganStatus`.
+| `label` value    | Displayed as    | What it means                                                                                                        |
+| ---------------- | --------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `vegan`          | Vegan company   | All food the company provides is vegan, by policy, and veganism is part of the company's values.                     |
+| `vegan-friendly` | Vegan friendly  | A proper vegan option is always available without having to ask, and vegan needs are considered by default.          |
+| `vegetarian`     | Vegetarian only | Vegetarian options exist, but vegan options are rare or on request. Vegans have to speak up or bring their own food. |
+| `not-vegan`      | Not vegan friendly | Little or no plant-based food is provided, and vegan needs are ignored, met poorly or with pushback.                 |
 
 Contributors only ever write the English value. The site maps each value to a rank internally (`vegan` = 1 … `not-vegan` = 4) for sorting; the rank never appears in markdown files.
 
@@ -114,7 +112,6 @@ Contributions come in as GitHub pull requests:
 - `CONTRIBUTING.md` explains the naming rule and the label rubric, and links to an example file.
 - A link on each company page to "edit this page" links to the company's markdown file on github.
 - `src/content/workplaces/_template.md` (ignored by the build) is a copy-paste starting point.
-- Contributors who don't want to edit files can instead open an issue using the "Add a workplace" [issue form](.github/ISSUE_TEMPLATE/add-workplace.yml), which asks for every field. A maintainer converts it into a workplace file and opens the PR. The form can't run the schema, so validation happens on that PR. `lastUpdated` isn't asked for; the maintainer uses the issue's date.
 - A GitHub Action validates every PR and fails if any workplace file is malformed (see [PR validation](#pr-validation)).
 - Each workplace has one rating. Anyone can open a PR to add or change any workplace; disagreements about a rating are discussed in the PR or in an issue.
 - Contributors are not credited on the site or in the markdown files. GitHub's commit history and contributor list already record who contributed.
