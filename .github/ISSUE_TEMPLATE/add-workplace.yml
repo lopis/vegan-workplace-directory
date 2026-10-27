@@ -1,0 +1,113 @@
+name: Add a workplace
+description: Suggest a workplace for the directory without editing any files.
+title: "Add workplace: "
+labels: ["new workplace"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill in this form and a maintainer will add the workplace for you. A workplace is one company in one city. If the company has offices in several cities, open one issue per city.
+
+        Issues are public. Your GitHub name is shown on this issue, but not on the site.
+
+  - type: input
+    id: name
+    attributes:
+      label: Company name
+      description: The company's full name.
+      placeholder: Ecosia GmbH
+    validations:
+      required: true
+
+  - type: input
+    id: industry
+    attributes:
+      label: Industry
+      description: What field the company works in.
+      placeholder: Software
+    validations:
+      required: true
+
+  - type: input
+    id: city
+    attributes:
+      label: City
+      description: City of this workplace.
+      placeholder: Berlin
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: Office name
+      description: Only needed if the company has more than one office in this city.
+      placeholder: Downtown
+
+  - type: input
+    id: country
+    attributes:
+      label: Country
+      placeholder: Germany
+    validations:
+      required: true
+
+  - type: dropdown
+    id: size
+    attributes:
+      label: Size
+      description: Number of people at **this workplace**, not the whole company.
+      options:
+        - 1-99
+        - 100-199
+        - 200-499
+        - 500-749
+        - 750-999
+        - 1000+
+    validations:
+      required: true
+
+  - type: dropdown
+    id: label
+    attributes:
+      label: Vegan label
+      description: Covers both food and workplace culture. If they point to different labels, pick the less vegan-friendly one and explain why below.
+      options:
+        - "Vegan company: all food the company provides is vegan, by policy, and veganism is part of the company's values."
+        - "Vegan friendly: a proper vegan option is always available without asking, and vegan needs are considered by default."
+        - "Vegetarian only: vegan options are rare or on request, and vegans have to speak up or bring their own food."
+        - "Not vegan friendly: little or no plant-based food, and vegan needs are ignored or met with pushback."
+    validations:
+      required: true
+
+  - type: input
+    id: description
+    attributes:
+      label: What the company does
+      description: One line.
+      placeholder: Search engine that uses its profits to plant trees.
+    validations:
+      required: true
+
+  - type: input
+    id: veganStatus
+    attributes:
+      label: What being vegan is like there
+      description: One line.
+      placeholder: Vegan lunch option every day; team events default to vegetarian.
+    validations:
+      required: true
+
+  - type: input
+    id: website
+    attributes:
+      label: Company website
+      placeholder: ecosia.org
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: More details
+      description: Optional. Write as much as you like about the canteen, team events or how colleagues react.

@@ -15,6 +15,10 @@ Open the workplace's page on the site and click **Edit this page on GitHub** at 
 
 A check runs on every pull request. If something is wrong, the check fails and tells you which file and field to fix. Edit the file in the same pull request and the check runs again.
 
+## Or fill in a form instead
+
+If you'd rather not edit files, [open an "Add a workplace" issue](https://github.com/lopis/vegan-workplace-directory/issues/new?template=add-workplace.yml) and fill in the form. A maintainer will turn it into a workplace file for you.
+
 ## File name
 
 `<company>.<country>.md`, all lowercase, with hyphens instead of spaces.
